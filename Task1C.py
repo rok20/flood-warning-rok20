@@ -11,6 +11,10 @@ def run():
     #use the function to create the list, centre (52.2053, 0.1218), radius 10km
     in_range_list = stations_within_radius(stations, (52.2053, 0.1218), 10)
 
-    print(in_range_list)
+    names = []
+    for station in in_range_list:
+        names.append(station.name)
+    names.sort()
+    print(names)
 if __name__ == "__main__":
     run()
