@@ -58,7 +58,7 @@ def river_with_station(stations):
    # Create an empty dictionary
   dictionary = {}
   # iterate through the rivers, if it is already in the dictionary, add the new river onto the end and if not create a new slot in the dictionary for the new river. 
-  # This currently has duplicates!!!!
+  
   for station in stations:
     if station.river in dictionary:        
         dictionary[station.river] += [station.name]   
