@@ -6,6 +6,7 @@ geographical data.
 
 """
 from .utils import sorted_by_key  # noqa
+#somehow I had to change .utils to utils to make it work
 
 from haversine import haversine, Unit
 
@@ -38,6 +39,18 @@ def stations_by_distance(stations, p):
     # Sort the list in order of distance largest to smallest and return the result
     sortedbydistance = sorted_by_key(list, 2)
     return sortedbydistance
+
+
+# This function, given a radius r and coordinate x, will return a list containing all stations withing the radius of x
+
+def stations_within_radius(stations, centre, r):
+    #create an empty list
+    stations_within = []
+    for station in stations:
+        #if a station is within radius, then append it to the list
+        if haversine(station.coord, centre) < r:
+            stations_within.append(station)
+    return stations_within
 
 # A function that, given a list of stations, will return a container with the names of the rivers with a monitoring station
 
