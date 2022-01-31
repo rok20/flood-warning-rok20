@@ -70,3 +70,29 @@ def river_with_station(stations):
       dictionary[station.river] = sorted(dictionary[station.river])
       
   return dictionary
+
+
+#This function, given int N, returns the N rivers with the most stations, in tuples (river name, # of stations)
+#If there are multiple rivers in the Nth entry, include them in a list
+
+def rivers_by_station_number(stations, N):
+    #create a list to store all river names
+    rivers = []
+    for station in stations:
+        if station.river not in rivers:
+            rivers.append(station.river)
+    #create an empty list to contain all tuples
+    station_count = []
+    for river in rivers:
+        n = 0
+        for station in stations:
+            if river == station.river:
+                n = n + 1
+        station_count.append((river, n))
+    sorted_station_count = sorted_by_key(station_count, 1, True)
+    #the index to which we include in the final list
+    ind = N - 1
+    while sorted_station_count[ind][1] == sorted_station_count[ind + 1][1] and ind < len(sorted_station_count) - 1:
+        ind = ind + 1
+    
+    return sorted_station_count[:ind+1]
