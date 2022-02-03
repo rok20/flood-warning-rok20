@@ -6,8 +6,11 @@ def run():
     stations = build_station_list()
     
     Inconsistentlist = inconsistent_typical_range_stations(stations)
-
-    print(Inconsistentlist)
+    namelist = []
+    for inconsistent in Inconsistentlist:
+        namelist.append(inconsistent.name)
+    namelist.sort()
+    print(namelist)
 
     
 if __name__ == "__main__":

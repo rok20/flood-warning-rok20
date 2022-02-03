@@ -41,21 +41,28 @@ class MonitoringStation:
     
     def typical_range_consistent(self):
         
-        if self.typical_range[0] < self.typical_range[1]:
-            return True
-        else: 
+        #check if data is available, if not, return false
+        if self.typical_range == None:
             return False
+        else:
+            #take h1 to be typical low, h2 to be typical high
+            h_1, h_2 = self.typical_range[0], self.typical_range[1]
+            if h_1 > h_2:
+                return False
+            else:
+                return True
         
 
-def inconsistent_typical_range_stations(stations):
-    x = [0]
 
+
+def inconsistent_typical_range_stations(stations):
+    x = []
     for station in stations: 
-        if MonitoringStation.typical_range_consistent == False:
+        if not station.typical_range_consistent():
             x.append(station)
-        elif MonitoringStation.typical_range_consistent == True:
+        elif station.typical_range_consistent():
             pass
-        print(MonitoringStation.typical_range_consistent)
+        # print(MonitoringStation.typical_range_consistent)
     return x
-            
+
         
