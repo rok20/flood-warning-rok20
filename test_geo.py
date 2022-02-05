@@ -1,5 +1,5 @@
 from floodsystem.utils import sorted_by_key  # noqa
-from haversine import haversine, Unit
+
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_by_distance, river_with_station, stations_within_radius, rivers_by_station_number
 
