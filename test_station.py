@@ -30,3 +30,4 @@ def test_inconsistent_typical_range_stations():
     stations = build_station_list()
     x = inconsistent_typical_range_stations(stations)
     assert len(x)>0
+    
