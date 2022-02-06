@@ -55,7 +55,21 @@ def stations_within_radius(stations, centre, r):
 # A function that, given a list of stations, will return a container with the names of the rivers with a monitoring station
 
 def river_with_station(stations):
-   # Create an empty dictionary
+    listofrivers = []
+    
+    for station in stations:
+        
+        listofrivers.append(station.river)
+
+    riverslist = set(listofrivers)
+    riverslist = sorted(riverslist)
+
+    return riverslist
+    
+   
+
+def stations_by_river(stations):
+    # Create an empty dictionary
   dictionary = {}
   # iterate through the rivers, if it is already in the dictionary, add the new river onto the end and if not create a new slot in the dictionary for the new river. 
   
@@ -70,7 +84,6 @@ def river_with_station(stations):
       dictionary[station.river] = sorted(dictionary[station.river])
       
   return dictionary
-
 
 #This function, given int N, returns the N rivers with the most stations, in tuples (river name, # of stations)
 #If there are multiple rivers in the Nth entry, include them in a list
