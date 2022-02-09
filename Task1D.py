@@ -8,7 +8,7 @@ def run():
     test_river_with_stations()
     riverswithstations = river_with_station(stations)
     
-    print("Number of rivers:", len(riverswithstations), "The first 10 are:", riverswithstations[:10])
+    print("Number:", len(riverswithstations), "The first 10 are:", riverswithstations[:10])
     
 if __name__ == "__main__":
     run()

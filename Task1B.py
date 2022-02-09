@@ -10,7 +10,8 @@ def run():
     
     x = stations_by_distance(stations, (52.2053, 0.1218))
 
-    print(x)
+    print("The 10 closest", x[:10])
+    print("The 10 furthest", x[-10:])
     
 if __name__ == "__main__":
     run()
