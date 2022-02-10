@@ -6,11 +6,9 @@ geographical data.
 
 """
 from .utils import sorted_by_key  # noqa
-#somehow I had to change .utils to utils to make it work
 
 from haversine import haversine, Unit
 
-# Install haversine if not already: "pip install haversine"
 
 # A function that, given a list of stations and a coordinate will return a list of (station, distance) tuples, sorted by distance.
 
