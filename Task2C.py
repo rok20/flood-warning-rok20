@@ -7,7 +7,7 @@ def run():
     
     x = stations_highest_rel_level(stations, 10)
     for item in x:
-        print(item[0], item[1])
+        print(item.name, item.relative_water_level())
 
 if __name__ == "__main__":
     run()
