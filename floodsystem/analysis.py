@@ -7,7 +7,7 @@ def polyfit(dates, levels, p):
     flt = matplotlib.dates.date2num(dates)
     tup = []
     #find the polynomial using the data
-    p_coeff = np.polyfit(dates, levels, p)
+    p_coeff = np.polyfit(flt, levels, p)
     poly = np.poly1d(p_coeff)
     for i in range(len(poly)):
         tup.append((poly, flt))

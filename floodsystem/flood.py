@@ -1,23 +1,27 @@
+from . import datafetcher
 from . import stationdata
-from .station import MonitoringStation 
+from .station import MonitoringStation
 from .station import inconsistent_typical_range_stations
 from .utils import sorted_by_key
 
 def stations_highest_rel_level(stations, N):
     stationdata.update_water_levels(stations)
-    #create a list to hold tuples of all stations and their relative water level
+    #Create a list, and ensure using no None data, then make a list including the name and the difference between current level and the relative water level
+
     rel_level = []
     for station in stations:
-        if station.relative_water_level() != None:
-            rel_level.append((station, station.relative_water_level()))
-    #sort the list by relative water level in descending order
-    rel_level = sorted_by_key(rel_level, 1, True)
-    #take the station object of the first N terms of the previous list and make into a new list
-    first_N = []
-    for i in range(N):
-        first_N.append(rel_level[i][0])
-        
-    return first_N
+        if station.latest_level != None:
+            if station.relative_water_level() != None:
+                x = station.relative_water_level()
+                y = station.latest_level
+                
+                rel_level.append((station.name, y-x))
+    #Sort the list from highest according to the most at risk. Then extract the first N
+
+    rel_level.sort(key=lambda x:x[1], reverse=True)
+    rel_level_final = rel_level[:N]
+
+    return rel_level_final
     
     
 #Take in a list of MonitoringStation objects and a tol value
