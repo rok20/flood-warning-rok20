@@ -6,6 +6,7 @@ def run():
     stations = build_station_list()
     
     x = stations_highest_rel_level(stations, 10)
+    print(x)
     for item in x:
         print(item.name, item.relative_water_level())
 

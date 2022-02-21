@@ -7,9 +7,9 @@ def plot_water_level_with_fit(station, dates, levels, p):
     list = polyfit(dates, levels, p)
     
     dates2 = matplotlib.dates.date2num(dates) 
-    print(dates2)
+    
     dates2 = dates2 - dates2[0]
-    print(dates2)
+    
     points  = np.linspace(dates2[0], dates2[-1], 30)
     
     plt.plot(dates2, levels)
