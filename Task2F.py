@@ -12,20 +12,24 @@ def run():
     stations = build_station_list()
     listof5 = stations_highest_rel_level(stations, 5)
     listofdata = []
-    
+    typicalhighlow = []
     dt = 2
  
     for i in stations:
         for j in listof5:
-            if i.name == j[0]:
+            if i.name == j.name:
                 
                 dates, levels = fetch_measure_levels(i.measure_id, dt=datetime.timedelta(days=dt))
-                listofdata.append([i.name, dates, levels])      
+                listofdata.append([i.name, dates, levels]) 
+                typicalhighlow.append(i.typical_range) 
+                print(typicalhighlow)  
 
-    
-    plot_water_level_with_fit(listofdata[0][0], listofdata[0][1], listofdata[0][2], 4)
-   
-    plt.show()
+    for n in range(4):
+        plot_water_level_with_fit(listofdata[n][0], listofdata[n][1], listofdata[n][2], 4)
+        
+        plt.axhline(y = typicalhighlow[n][0])
+        plt.axhline(y = typicalhighlow[n][1])
+        plt.show()
     
 
 
