@@ -16,8 +16,8 @@ def plot_water_levels(station, dates, levels):
 
     #add typical high and low
     low, high = station.typical_range[0], station.typical_range[1]
-    plt.axhline(y = low, color = 'b', lineStyle = '-', label = 'Typical low')
-    plt.axhline(y = high, color = 'r', linestyle = '-', label = 'Typical High')
+    plt.axhline(y = low, color = 'b', label = 'Typical low')
+    plt.axhline(y = high, color = 'r', label = 'Typical High')
 
 
     # Display plot

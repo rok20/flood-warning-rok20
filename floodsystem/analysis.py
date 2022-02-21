@@ -6,7 +6,6 @@ def polyfit(dates, levels, p):
     #shift the dates so they are floats
     flt = matplotlib.dates.date2num(dates)
     
-    
     #find the polynomial using the data
     p_coeff = np.polyfit(flt - flt[0], levels, p)
     poly = np.poly1d(p_coeff)

@@ -22,7 +22,7 @@ def run():
                 dates, levels = fetch_measure_levels(i.measure_id, dt=datetime.timedelta(days=dt))
                 listofdata.append([i.name, dates, levels]) 
                 typicalhighlow.append(i.typical_range) 
-                print(typicalhighlow)  
+                
 
     for n in range(4):
         plot_water_level_with_fit(listofdata[n][0], listofdata[n][1], listofdata[n][2], 4)
