@@ -14,7 +14,6 @@ def run():
     listofdata = []
     typicalhighlow = []
     dt = 2
-    
  
     for i in stations:
         for j in listof5:
