@@ -45,6 +45,14 @@ def run():
     # Print level history
     for date, level in zip(dates, levels):
         print(date, level)
+    
+    #test if dates is a list
+    #print(dates)
+    #turns out dates is a list of datetime objects
+
+    #test if levels is a list
+    #print(levels)
+    #ok levels is just a list of floats
 
 
 if __name__ == "__main__":
