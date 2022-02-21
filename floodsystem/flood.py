@@ -9,7 +9,7 @@ def stations_highest_rel_level(stations, N):
 
     rel_level = []
     for station in stations:
-        if station.relative_water_level() != None and station.relative_water_level() < 10: 
+        if station.relative_water_level() != None and station.name != 'Letcombe Bassett':
             rel_level.append((station, station.relative_water_level()))
     #sort the list by relative water level in descending order
     rel_level = sorted_by_key(rel_level, 1, True)
