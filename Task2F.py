@@ -14,6 +14,7 @@ def run():
     listofdata = []
     typicalhighlow = []
     dt = 2
+    
  
     for i in stations:
         for j in listof5:
@@ -24,7 +25,7 @@ def run():
                 typicalhighlow.append(i.typical_range) 
                 
 
-    for n in range(4):
+    for n in range(5):
         plot_water_level_with_fit(listofdata[n][0], listofdata[n][1], listofdata[n][2], 4)
         
         plt.axhline(y = typicalhighlow[n][0])
