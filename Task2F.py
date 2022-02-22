@@ -14,7 +14,7 @@ def run():
     listofdata = []
     typicalhighlow = []
     dt = 2
- 
+    #Find all stations that are highest relative water level and extract necessray data
     for i in stations:
         for j in listof5:
             if i.name == j.name:
@@ -23,12 +23,12 @@ def run():
                 listofdata.append([i.name, dates, levels]) 
                 typicalhighlow.append(i.typical_range) 
                 
-
+    #iterate over list to plot a graph for each case and provide high low lines.
     for n in range(5):
         plot_water_level_with_fit(listofdata[n][0], listofdata[n][1], listofdata[n][2], 4)
         
-        plt.axhline(y = typicalhighlow[n][0])
-        plt.axhline(y = typicalhighlow[n][1])
+        plt.axhline(y = typicalhighlow[n][0], color = 'b')
+        plt.axhline(y = typicalhighlow[n][1], color = 'r')
         plt.show()
     
 

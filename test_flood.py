@@ -13,6 +13,7 @@ def test_stations_highest_rel_level():
     river = "River X"
     town = "My Town"
     s = [MonitoringStation(s_id, m_id, label, coord, trange, river, town)]
+    
     x = stations_highest_rel_level(s, 1)
-
-print(test_stations_highest_rel_level())
+    
+test_stations_highest_rel_level()
