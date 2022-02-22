@@ -30,16 +30,20 @@ def plot_water_level_with_fit(station, dates, levels, p):
     list = polyfit(dates, levels, p)
     
     dates2 = matplotlib.dates.date2num(dates) 
-    
+
+    #adjust dates so values aren't so high
     dates2 = dates2 - dates2[0]
     
+    #provide points at set intervals for the polynomial
     points  = np.linspace(dates2[0], dates2[-1], 30)
     
-    plt.plot(dates2, levels)
-    plt.plot(points, list[0](points))
-    plt.xlabel("Dates")
+    #plot data in hours for each curve, label the axis and provide a title.
+    plt.plot(24*dates2, levels)
+    plt.plot(24*points, list[0](points))
+    plt.xlabel("Hours in the past")
     plt.ylabel("Water Level")
     plt.title(station)
+    
 
     plt.show
 
