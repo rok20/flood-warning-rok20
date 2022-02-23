@@ -6,8 +6,11 @@ import datetime
 import floodsystem.station
 from floodsystem.datafetcher import fetch_measure_levels
 import matplotlib.pyplot as plt
+from test_analysis import test_polyfit
 
 def run():
+    #Test the function polyfit
+    test_polyfit()
     # Build list of stations
     stations = build_station_list()
     listof5 = stations_highest_rel_level(stations, 5)
