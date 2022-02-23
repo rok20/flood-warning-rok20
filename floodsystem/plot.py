@@ -28,7 +28,7 @@ def plot_water_levels(station, dates, levels):
 
 def plot_water_level_with_fit(station, dates, levels, p):
     list = polyfit(dates, levels, p)
-    
+    print(list)
     dates2 = matplotlib.dates.date2num(dates) 
 
     #adjust dates so values aren't so high
