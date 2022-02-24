@@ -30,8 +30,8 @@ def run():
     for n in range(5):
         plot_water_level_with_fit(listofdata[n][0], listofdata[n][1], listofdata[n][2], 4)
         
-        plt.axhline(y = typicalhighlow[n][0], color = 'b')
-        plt.axhline(y = typicalhighlow[n][1], color = 'r')
+        plt.axhline(y = typicalhighlow[n][0], color = 'b', label = "Typical range low")
+        plt.axhline(y = typicalhighlow[n][1], color = 'r', label = "Typical range high")
         plt.show()
     
 

@@ -38,8 +38,8 @@ def plot_water_level_with_fit(station, dates, levels, p):
     points  = np.linspace(dates2[0], dates2[-1], 30)
     
     #plot data in hours for each curve, label the axis and provide a title.
-    plt.plot(24*dates2, levels)
-    plt.plot(24*points, list[0](points))
+    plt.plot(24*dates2, levels, label = "Actual data")
+    plt.plot(24*points, list[0](points), label = "Best fit polynomial")
     plt.xlabel("Hours in the past")
     plt.ylabel("Water Level")
     plt.title(station)
