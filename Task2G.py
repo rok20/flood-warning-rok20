@@ -4,7 +4,7 @@
 #Moderate rising and between the two bands/ decreasing but above the highest
 #Low not rising and not above usual heighest
 #wants speeding up
-
+################################# Would like to use numba to maybe speed up? not sure what else.
 
 #write a function to determine gradient of line? Since the polyfit is set so 0 is present, the x coefficient is the gradient at present day
 import string
