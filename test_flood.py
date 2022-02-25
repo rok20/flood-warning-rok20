@@ -31,6 +31,5 @@ def test_stations_highest_rel_level():
 
     s = [MonitoringStation(s_id, m_id, label, coord, trange, river, town), MonitoringStation(s_id2, m_id2, label2, coord2, trange2, river2, town2), MonitoringStation(s_id3, m_id3, label3, coord3, trange3, river3, town3)]
     
-    x = stations_highest_rel_level(s, 1)
     
 test_stations_highest_rel_level()
