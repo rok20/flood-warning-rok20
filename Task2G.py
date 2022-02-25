@@ -8,42 +8,46 @@
 
 #write a function to determine gradient of line? Since the polyfit is set so 0 is present, the x coefficient is the gradient at present day
 import string
+from time import time
 from floodsystem.analysis import polyfit
 from floodsystem.stationdata import build_station_list
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
 import floodsystem.datafetcher
+from numba import jit
 
 
 stations = build_station_list()
 listforgrad = []
 dt = 1
-def gradient(dates, levels):
+#def gradient(dates, levels):
     
-    list = polyfit(dates, levels, 4)
-    return list
-    
+    #list = polyfit(dates, levels, 4)
+    #return list
+
 gradientlist = []
+#gradientlist = [(station.name, gradient(fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt)))[0][1], fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))[1][0], station.typical_range) for station in stations]
 for station in stations:
-    #print(type(station.measure_id))
-    if type(station.measure_id) == str:
-        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
+    
+    
+    
+    dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         
-        try:
-            polynomial = gradient(dates, levels)
+    try:
+        polynomial = polyfit(dates, levels, 4)
             
-            #make a list of tuples with station name, the gradient and the current level and typical range: LATEST LEVEL isnt working 
-            gradientlist.append([station.name, polynomial[0][1], levels[0], station.typical_range])
+        #make a list of tuples with station name, the gradient and the current level and typical range: LATEST LEVEL isnt working 
+        gradientlist.append([station.name, polynomial[0][1], levels[0], station.typical_range])
             
-        except:
-            pass
+    except:
+        pass
 
 # Four categories and then look at initial conditions to sort into 4 groups ?
 severe = []
 high = []
 moderate = []
 low = []
-print(gradientlist)
+
 for item in gradientlist:
     try:
         if item[1] > 0 and item[2] > 5* item[3][1]:
