@@ -3,8 +3,7 @@
 #High rising and above the top band/ 
 #Moderate rising and between the two bands/ decreasing but above the highest
 #Low not rising and not above usual heighest
-#wants speeding up
-################################# Would like to use numba to maybe speed up? not sure what else.
+
 
 #write a function to determine gradient of line? Since the polyfit is set so 0 is present, the x coefficient is the gradient at present day
 import string
@@ -20,10 +19,7 @@ from numba import jit
 stations = build_station_list()
 listforgrad = []
 dt = 1
-#def gradient(dates, levels):
-    
-    #list = polyfit(dates, levels, 4)
-    #return list
+
 
 gradientlist = []
 #gradientlist = [(station.name, gradient(fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt)))[0][1], fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))[1][0], station.typical_range) for station in stations]
@@ -36,13 +32,13 @@ for station in stations:
     try:
         polynomial = polyfit(dates, levels, 4)
             
-        #make a list of tuples with station name, the gradient and the current level and typical range: LATEST LEVEL isnt working 
+        #make a list of tuples with station name, the gradient and the current level and typical range: 
         gradientlist.append([station.name, polynomial[0][1], levels[0], station.typical_range])
             
     except:
         pass
 
-# Four categories and then look at initial conditions to sort into 4 groups ?
+
 severe = []
 high = []
 moderate = []
@@ -61,7 +57,6 @@ for item in gradientlist:
     except:
         pass
 
-#  Definitely needs speeding up!!!
 
 print("Stations with severe risk:")
 print(severe)
