@@ -32,7 +32,7 @@ dt = 0.125
 #tolerance relative water level for low risk
 tol_low = 0.8
 #gradient threshold
-k_0 = 0
+k_0 = 0.5
 
 # Four categories and then look at initial conditions to sort into 4 groups ?
 severe = []
@@ -72,9 +72,9 @@ for station in exclude_low:
     dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
 
     try:
-        polynomial = polyfit(dates, levels, 1)
+        polynomial = polyfit(dates, levels, 3)
         #make a list of tuples with station itself and the linear gradient of the last 3 hrs 
-        gradientlist.append((station, polynomial[0][0]))
+        gradientlist.append((station, polynomial[0][1]))
     except:
         pass
 
@@ -87,17 +87,18 @@ for station in exclude_low:
 for item in gradientlist:
     rel = item[0].relative_water_level()
     k = item[1]
+    
     try:
         if rel < 1:
-            if k < k_0:
-                moderate.append(item[0])
-            elif k >= k_0:
-                high.append(item[0])
-        elif rel >= 1:
+            moderate.append(item[0])
+            
+        elif rel >= 1 and rel <= 5:
             if k < k_0:
                 high.append(item[0])
             elif k >= k_0:
                 severe.append(item[0])
+        elif rel > 5:
+            severe.append(item[0])
     except:
         pass
 #print('finished classifying')
