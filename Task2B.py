@@ -1,9 +1,12 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.flood import stations_level_over_threshold
+from test_flood import stations_level_over_threshold, test_stations_level_over_threshold
 
 def run():
     # Build list of stations
     stations = build_station_list()
+
+    test_stations_level_over_threshold()
 
     x = stations_level_over_threshold(stations, 0.8)
     for each in x:
