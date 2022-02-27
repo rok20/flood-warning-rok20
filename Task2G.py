@@ -25,7 +25,6 @@ import floodsystem.station
 #severe: rel > 1, and increasing
 
 stations = build_station_list()
-update_water_levels(stations)
 listforgrad = []
 #fetch data for only the past 3 hrs
 dt = 0.125
@@ -63,7 +62,7 @@ for station in stations:
     if station not in exclude_low:
         low.append(station)
 
-
+update_water_levels(exclude_low)
 
 gradientlist = []
 #Test how long it takes to calculate gradients
