@@ -1,12 +1,11 @@
-from . import stationdata
+
 from .station import MonitoringStation
 from .station import inconsistent_typical_range_stations
 from .utils import sorted_by_key
 
 def stations_highest_rel_level(stations, N):
-    stationdata.update_water_levels(stations)
+    
     #create a list to hold tuples of all stations and their relative water level
-
     rel_level = []
     for station in stations:
         if station.relative_water_level() != None and station.name != 'Letcombe Bassett':
@@ -24,7 +23,6 @@ def stations_highest_rel_level(stations, N):
 #Take in a list of MonitoringStation objects and a tol value
 #return a list of tuples (station with rel water level > tol, rel), sorted by rel high to low
 def stations_level_over_threshold(stations, tol):
-    stationdata.update_water_levels(stations)
     #create empty list
     x = []
     for station in stations:
