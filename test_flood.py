@@ -1,35 +1,34 @@
 from floodsystem.station import MonitoringStation
-from floodsystem.stationdata import update_water_levels
-from floodsystem.flood import stations_highest_rel_level
+from floodsystem.stationdata import update_water_levels, build_station_list
+from floodsystem.flood import stations_highest_rel_level, stations_level_over_threshold
 
 def test_stations_highest_rel_level():
+    #I couldn't figure out how to put latest level into artificial stations
+    #So I'm going to verify with real stations
+    stations = build_station_list()
+    update_water_levels(stations)
 
-# Create a station
-    s_id = "test-s-id"
-    m_id = "test-m-id"
-    label = "some station"
-    coord = (-2.0, 4.0)
-    trange = (-2.3, 3.4445)
-    river = "River X"
-    town = "My Town"
+    #test that all returned stations have rel > tol, all not returned have rel <= tol
+    stations_over = stations_level_over_threshold(stations, 0.8)
+    isCorrect = True
 
-    s_id2 = "test-s-id2"
-    m_id2 = "test-m-id2"
-    label2 = "some station2"
-    coord2 = (-2.02, 4.02)
-    trange2 = (-5.3, 9.4445)
-    river2 = "River X2"
-    town2 = "My Town2"
-
-    s_id3 = "test-s-id3"
-    m_id3 = "test-m-id3"
-    label3 = "some station3"
-    coord3 = (-1.02, 6.02)
-    trange3 = (-1.3, 4.4845)
-    river3 = "River X3"
-    town3 = "My Town3"
-
-    s = [MonitoringStation(s_id, m_id, label, coord, trange, river, town), MonitoringStation(s_id2, m_id2, label2, coord2, trange2, river2, town2), MonitoringStation(s_id3, m_id3, label3, coord3, trange3, river3, town3)]
+    for station in stations:
+        if station in stations_over:
+            if station.relative_water_level() <= 0.8:
+                isCorrect = False
+        else:
+            if station.relative_water_level() > 0.8:
+                isCorrect = False
     
-    
-test_stations_highest_rel_level()
+    assert isCorrect == True
+
+
+    #check that the number of stations returned is correct
+    highest_5 = stations_highest_rel_level(stations, 5)
+    highest_10 = stations_highest_rel_level(stations, 10)
+    highest_20 = stations_highest_rel_level(stations, 20)
+
+    assert len(highest_5) == 5
+    assert len(highest_10) == 10
+    assert len(highest_20) == 20
+
