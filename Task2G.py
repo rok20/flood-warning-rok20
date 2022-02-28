@@ -102,24 +102,6 @@ for item in gradientlist:
             severe.append(item[0])
     except:
         pass
-#print('finished classifying')
-#  Definitely needs speeding up!!!
-#speeding up~
-
-#print("Stations with severe risk:")
-#print_station_names(severe)
-
-#print("Stations with high risk:")
-#print_station_names(high)
-
-#print("Stations with moderate risk:")
-#print_station_names(moderate)
-
-#print("Stations with low risk:")
-#print_station_names(low)
-
-#Just to test, do you like this?
-#add commas
 
 
 #New display options
