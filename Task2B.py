@@ -9,8 +9,11 @@ def run():
     test_stations_level_over_threshold()
 
     x = stations_level_over_threshold(stations, 0.8)
+    
     for each in x:
-        print(each[0].name, each[1])
+        #This is a faulty station
+        if each[0].name != 'Letcombe Bassett':
+            print(each[0].name, each[1])
 
 if __name__ == "__main__":
     run()
