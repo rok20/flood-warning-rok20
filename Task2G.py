@@ -127,7 +127,7 @@ still_loop = True
 check_s, check_h, check_m, check_l = False, False, False, False
 while (not check_s or not check_h or not check_m or not check_l) and still_loop:
     print("Risk level to show: ")
-    x = input("Please input: severe/high/moderate/low")
+    x = input("Please input: severe/high/moderate/low\n")
 
     if x == "severe" or x == "Severe":
         if check_s:
@@ -159,13 +159,16 @@ while (not check_s or not check_h or not check_m or not check_l) and still_loop:
             check_l = True
     else:
         print("Please enter one of the options shown above.")
-
-    y = input("Anything else to check? Y/N")
-
-    if y == "N" or y == "n":
-        still_loop = False
-    elif y != "Y" and y != "y":
-        raise ValueError("Wrong input.")
+    
+    if not check_s or not check_h or not check_m or not check_l:
+        y = input("Anything else to check? Y/N\n")
+        if y == "N" or y == "n":
+            still_loop = False
+        elif y != "Y" and y != "y":
+            raise ValueError("Wrong input.")
+    else:
+        print("Stations with all risk levels have been checked.")
+    
 
 
 
