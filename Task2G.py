@@ -105,17 +105,37 @@ for item in gradientlist:
 #  Definitely needs speeding up!!!
 #speeding up~
 
-print("Stations with severe risk:")
-print_station_names(severe)
+#print("Stations with severe risk:")
+#print_station_names(severe)
 
-print("Stations with high risk:")
-print_station_names(high)
+#print("Stations with high risk:")
+#print_station_names(high)
 
-print("Stations with moderate risk:")
-print_station_names(moderate)
+#print("Stations with moderate risk:")
+#print_station_names(moderate)
 
-print("Stations with low risk:")
-print_station_names(low)
+#print("Stations with low risk:")
+#print_station_names(low)
+
+#Just to test, do you like this?
+#add commas
+print("Risk level to show: severe/high/moderate/low")
+x = input()
+if x == "severe" or x == "Severe":
+    print("Stations with severe risk:")
+    print_station_names(severe)
+elif x == "high" or x == "High":
+    print("Stations with high risk:")
+    print_station_names(high)
+elif x == "moderate" or x == "Moderate":
+    print("Stations with moderate risk:")
+    print_station_names(moderate)
+elif x == "low" or x == "Low":
+    print("Stations with low risk:")
+    print_station_names(low)
+else:
+    raise ValueError("Please enter one of the options shown above.")
+
 
 
 
