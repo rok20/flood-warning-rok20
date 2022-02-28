@@ -42,8 +42,9 @@ low = []
 
 #to make code clear
 def print_station_names(stations):
-    for station in stations:
-        print(station.name, end=' ')
+    for station in stations[:-2]:
+        print(station.name, end=', ')
+    print(stations[-1].name)
     print()
 
 #def gradient(dates, levels):
@@ -119,25 +120,52 @@ for item in gradientlist:
 
 #Just to test, do you like this?
 #add commas
-print("Risk level to show: severe/high/moderate/low")
-x = input()
-if x == "severe" or x == "Severe":
-    print("Stations with severe risk:")
-    print_station_names(severe)
-elif x == "high" or x == "High":
-    print("Stations with high risk:")
-    print_station_names(high)
-elif x == "moderate" or x == "Moderate":
-    print("Stations with moderate risk:")
-    print_station_names(moderate)
-elif x == "low" or x == "Low":
-    print("Stations with low risk:")
-    print_station_names(low)
-else:
-    raise ValueError("Please enter one of the options shown above.")
 
 
+#New display options
+still_loop = True
+check_s, check_h, check_m, check_l = False, False, False, False
+while (not check_s or not check_h or not check_m or not check_l) and still_loop:
+    print("Risk level to show: ")
+    x = input("Please input: severe/high/moderate/low")
 
+    if x == "severe" or x == "Severe":
+        if check_s:
+            print("See above for severe risk.")
+        else:
+            print("Stations with severe risk:")
+            print_station_names(severe)
+            check_s = True
+    elif x == "high" or x == "High":
+        if check_h:
+            print("See above for high risk.")
+        else:
+            print("Stations with high risk:")
+            print_station_names(high)
+            check_h = True
+    elif x == "moderate" or x == "Moderate":
+        if check_m:
+            print("See above for moderate risk.")
+        else:
+            print("Stations with moderate risk:")
+            print_station_names(moderate)
+            check_m = True
+    elif x == "low" or x == "Low":
+        if check_l:
+            print("See above for low risk.")
+        else:
+            print("Stations with low risk:")
+            print_station_names(low)
+            check_l = True
+    else:
+        print("Please enter one of the options shown above.")
+
+    y = input("Anything else to check? Y/N")
+
+    if y == "N" or y == "n":
+        still_loop = False
+    elif y != "Y" and y != "y":
+        raise ValueError("Wrong input.")
 
 
 
