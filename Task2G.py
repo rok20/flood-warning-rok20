@@ -149,7 +149,7 @@ while (not check_s or not check_h or not check_m or not check_l) and still_loop:
         elif y != "Y" and y != "y":
             raise ValueError("Wrong input.")
     else:
-        print("Stations with all risk levels have been checked.")
+        print("All risk levels have been checked.")
     
 
 
